@@ -8,6 +8,7 @@ class GameSessionData
 {
     public GameMap GameMap { get; private set; }
     public List<Tower> TowerList { get; set; }
+    public List<Enemy> EnemyList { get; set; }
 
     public Coords selectedCellCoords = new Coords(0, 0);
 
@@ -17,6 +18,8 @@ class GameSessionData
         GameMap.LoadLevel();
 
         TowerList = new List<Tower>();
+        EnemyList = new List<Enemy>();
+        SpawnEnemy();
     }
 
     public void SpawnTower(int towerCoordX, int towerCoordY)
@@ -27,5 +30,11 @@ class GameSessionData
         var tower = new Policeman(new Coords(towerCoordX, towerCoordY));
         GameMap.Cells[towerCoordX, towerCoordY] = new Cell(towerCoordX, towerCoordY, CellType.Tower);
         TowerList.Add(tower);
+    }
+
+    public void SpawnEnemy()
+    {
+        var enemy = new Zombie(new Vector2((float)GameMap.spawnCoords.X, (float)GameMap.spawnCoords.Y));
+        EnemyList.Add(enemy);
     }
 }

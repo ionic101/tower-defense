@@ -72,8 +72,13 @@ namespace TowerDefense
             {
                 { TowerType.Policeman, Content.Load<Texture2D>("policeman")}
             };
-
             gameViewer.TowersViewer.LoadTextures(towerTextures);
+
+            var enemyTextures = new Dictionary<EnemyType, Texture2D>()
+            {
+                { EnemyType.Zombie, Content.Load<Texture2D>("zombie")}
+            };
+            gameViewer.EnemysViewer.LoadTextures(enemyTextures);
 
             var squareTexture = Content.Load<Texture2D>("select");
 

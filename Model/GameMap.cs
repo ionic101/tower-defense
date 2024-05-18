@@ -21,6 +21,7 @@ class GameMap
     public int MapHeight => _mapHeight;
 
     public Cell[,] Cells;
+    public Coords spawnCoords { get; private set; }
 
     public void LoadLevel(string levelDataPath=null)
     {
@@ -47,7 +48,8 @@ class GameMap
                         Cells[x, y] = new Cell(x, y, CellType.Road);
                         break;
                     case 's':
-                        Cells[x, y] = new Cell(x, y, CellType.Start);
+                        Cells[x, y] = new Cell(x, y, CellType.Road);
+                        spawnCoords = new Coords(x, y);
                         break;
                     default:
                         throw new Exception($"Don't know {lines[y][x]} cell format");

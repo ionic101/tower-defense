@@ -4,12 +4,14 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/User/Documents/c#/TowerDefense/TowerDefense/Content/sprites/grass.png</File>
-    <File>C:/Users/User/Documents/c#/TowerDefense/TowerDefense/Content/sprites/policeman.png</File>
-    <File>C:/Users/User/Documents/c#/TowerDefense/TowerDefense/Content/sprites/road.png</File>
-    <File>C:/Users/User/Documents/c#/TowerDefense/TowerDefense/Content/sprites/select.png</File>
+    <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/grass.png</File>
+    <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/policeman.png</File>
+    <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/road.png</File>
+    <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/select.png</File>
+    <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/zombie.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
