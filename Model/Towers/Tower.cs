@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Runtime.InteropServices;
 
 enum TowerType
 {
@@ -7,14 +8,10 @@ enum TowerType
     Minigunner
 }
 
-class Tower
+class Tower : GameCharacter
 {
     public TowerType Type;
-    public Coords Coord;
 
-    public Tower(TowerType type, Coords coord)
-    {
-        Type = type;
-        Coord = coord;
-    }
+    public Tower(Coordinate location, float rotation, float speed = 0.0f) : base(location, rotation, speed) { }
+    public Tower(float x, float y, float rotation, float speed = 0.0f) : base(x, y, rotation, speed) { }
 }

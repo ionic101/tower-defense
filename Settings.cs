@@ -5,6 +5,5 @@
     public static bool IsFullscreen = false;
     public static int CellSize = 10;
 
-    public const int MapCoordX = 0;
-    public const int MapCoordY = 0;
+    public static float CoordInaccuracy = 0.01f;
 }

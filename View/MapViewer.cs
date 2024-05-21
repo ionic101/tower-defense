@@ -26,7 +26,7 @@ class MapViewer
             for (int y = 0; y < sessionData.GameMap.MapHeight; y++)
             {
                 _spriteBatch.Draw(texture: _textures[sessionData.GameMap.Cells[x, y].Type],
-                    new Rectangle(x * Settings.CellSize + Settings.MapCoordX, y * Settings.CellSize + Settings.MapCoordY, Settings.CellSize, Settings.CellSize),
+                    new Rectangle(x * Settings.CellSize, y * Settings.CellSize, Settings.CellSize, Settings.CellSize),
                     color: Color.White);
             }
         }

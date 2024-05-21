@@ -87,10 +87,15 @@ namespace TowerDefense
 
         protected override void Update(GameTime gameTime)
         {
+            //Controller
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             playerController.ListenEvents();
+
+            //Data
+            var dt = gameTime.ElapsedGameTime.TotalMilliseconds / 1000;
+            sessionData.Update(dt);
 
             base.Update(gameTime);
         }

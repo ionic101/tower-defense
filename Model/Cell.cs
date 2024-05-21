@@ -10,10 +10,10 @@ public enum CellType
 
 public struct Cell
 {
-    public Coords Coord { get; set; }
+    public Coordinate Coord { get; set; }
     public CellType Type { get; set; }
 
-    public Cell(Coords coord, CellType type)
+    public Cell(Coordinate coord, CellType type)
     {
         Coord = coord;
         Type = type;
@@ -21,7 +21,7 @@ public struct Cell
 
     public Cell(int x, int y, CellType type)
     {
-        Coord = new Coords(x, y);
+        Coord = new Coordinate(x, y);
         Type = type;
     }
 }

@@ -22,11 +22,15 @@ class EnemysViewer
 
     public void Display()
     {
-        foreach (var enemy in sessionData.EnemyList)
+        lock(sessionData.EnemyList)
         {
-            spriteBatch.Draw(enemyTextures[enemy.Type],
-                    new Rectangle((int)(enemy.Coords.X * Settings.CellSize), (int)(enemy.Coords.Y * Settings.CellSize), Settings.CellSize, Settings.CellSize),
-                    color: Color.White);
+            foreach (var enemy in sessionData.EnemyList)
+            {
+                spriteBatch.Draw(enemyTextures[enemy.Type],
+                        new Rectangle((int)(enemy.Location.X * Settings.CellSize), (int)(enemy.Location.Y * Settings.CellSize), Settings.CellSize, Settings.CellSize),
+                        color: Color.White);
+            }
         }
+        
     }
 }

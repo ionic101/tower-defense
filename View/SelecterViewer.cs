@@ -26,7 +26,7 @@ class SelecterViewer
     {
 
         spriteBatch.Draw(texture,
-                    new Rectangle(sessionData.selectedCellCoords.X * Settings.CellSize + Settings.MapCoordX, sessionData.selectedCellCoords.Y * Settings.CellSize + Settings.MapCoordY, Settings.CellSize, Settings.CellSize),
+                    new Rectangle((int)sessionData.selectedCellCoords.X * Settings.CellSize, (int)sessionData.selectedCellCoords.Y * Settings.CellSize, Settings.CellSize, Settings.CellSize),
                     color: Color.White);
     }
 }

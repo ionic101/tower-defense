@@ -25,7 +25,7 @@ class TowersViewer
         foreach (var tower in sessionData.TowerList)
         {
             _spriteBatch.Draw(_towerTextures[tower.Type],
-                    new Rectangle(tower.Coord.X * Settings.CellSize, tower.Coord.Y * Settings.CellSize, Settings.CellSize, Settings.CellSize),
+                    new Rectangle((int)tower.Location.X * Settings.CellSize, (int)tower.Location.Y * Settings.CellSize, Settings.CellSize, Settings.CellSize),
                     color: Color.White);
         }
     }
