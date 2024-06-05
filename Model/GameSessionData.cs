@@ -12,7 +12,9 @@ class GameSessionData
     public List<Tower> TowerList { get; set; }
     public List<Enemy> EnemyList { get; set; }
 
-    public Coordinate selectedCellCoords = new Coordinate(0, 0);
+    public Vector2 selectedCellCoords = new Vector2(0, 0);
+
+    private float currentTicksSpawnEnemy = 0;
 
     public void Init()
     {
@@ -37,32 +39,35 @@ class GameSessionData
 
     public void SpawnEnemy()
     {
-        var enemy = new Zombie(GameMap.spawnCoords.X - 1, GameMap.spawnCoords.Y, 0.0f, 500);
+        var enemy = new Zombie(GameMap.spawnCoords.X - 1, GameMap.spawnCoords.Y, 0.0f, 100);
         enemy.MoveByPath(GameMap.RoadPath, () => Console.WriteLine("end"));
         EnemyList.Add(enemy);
     }
 
-    async public void StartWave()
+    public void StartWave()
     {
-        for (int i = 0;  i < 10; i++)
-        {
-            lock(EnemyList)
-            {
-                SpawnEnemy();
-            }
-            
-            await Task.Delay(1000);
-        }
+
     }
 
-    public void Update(double dt)
+    private void updateWave(float dt)
     {
-        lock(EnemyList)
+        currentTicksSpawnEnemy += dt;
+        if (currentTicksSpawnEnemy > 1)
         {
-            foreach (var enemy in EnemyList)
-            {
-                enemy.MoveUpdate(dt);
-            }
+            SpawnEnemy();
+            currentTicksSpawnEnemy -= 1;
+        }
+            
+
+    }
+
+    public void Update(float dt)
+    {
+        updateWave(dt);
+        foreach (var enemy in EnemyList)
+        {
+            enemy.MoveUpdate(dt);
+            enemy.RotationUpdate();
         }
     }
 }

@@ -5,6 +5,7 @@ using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using Microsoft.Xna.Framework;
 
 class GameMap
 {
@@ -23,11 +24,11 @@ class GameMap
     public int MapHeight => _mapHeight;
 
     public Cell[,] Cells;
-    public Coordinate spawnCoords { get; private set; }
+    public Vector2 spawnCoords { get; private set; }
 
 
-    private List<Coordinate> _roadPath;
-    public List<Coordinate> RoadPath {
+    private List<Vector2> _roadPath;
+    public List<Vector2> RoadPath {
         get
         {
             if (_roadPath == null)
@@ -65,7 +66,7 @@ class GameMap
                         break;
                     case 's':
                         Cells[x, y] = new Cell(x, y, CellType.Road);
-                        spawnCoords = new Coordinate(x, y);
+                        spawnCoords = new Vector2(x, y);
                         break;
                     default:
                         throw new Exception($"Don't know {lines[y][x]} cell format");
@@ -74,21 +75,21 @@ class GameMap
         }
     }
 
-    private List<Coordinate> getRoadPath()
+    private List<Vector2> getRoadPath()
     {
-        var directions = new Coordinate[]
+        var directions = new Vector2[]
         {
-            new Coordinate(1, 0),
-            new Coordinate(0, 1),
-            new Coordinate(-1, 0),
-            new Coordinate(0, -1)
+            new Vector2(1, 0),
+            new Vector2(0, 1),
+            new Vector2(-1, 0),
+            new Vector2(0, -1)
         };
 
-        var roadPath = new List<Coordinate>();
+        var roadPath = new List<Vector2>();
         var visitedCells = new HashSet<Cell>();
 
         var lastCell = Cells[(int)spawnCoords.X, (int)spawnCoords.Y];
-        var lastDirection = new Coordinate(1, 0);
+        var lastDirection = new Vector2(1, 0);
         visitedCells.Add(lastCell);
 
         while (true)

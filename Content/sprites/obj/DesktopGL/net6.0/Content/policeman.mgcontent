@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/User/Documents/git/tower-defense/Content/sprites/policeman.png</SourceFile>
-  <SourceTime>2024-04-30T21:56:25.6930864+05:00</SourceTime>
+  <SourceTime>2024-05-24T12:49:02.8002559+05:00</SourceTime>
   <DestFile>C:/Users/User/Documents/git/tower-defense/Content/sprites/bin/DesktopGL/Content/policeman.xnb</DestFile>
-  <DestTime>2024-05-18T22:44:50.8902691+05:00</DestTime>
+  <DestTime>2024-05-24T12:49:13.669663+05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T16:44:56+05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

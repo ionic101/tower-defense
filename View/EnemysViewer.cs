@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 class EnemysViewer
@@ -20,17 +21,20 @@ class EnemysViewer
         this.enemyTextures = enemyTextures;
     }
 
+    //TO REFACT!!!!!
     public void Display()
     {
-        lock(sessionData.EnemyList)
-        {
             foreach (var enemy in sessionData.EnemyList)
             {
                 spriteBatch.Draw(enemyTextures[enemy.Type],
-                        new Rectangle((int)(enemy.Location.X * Settings.CellSize), (int)(enemy.Location.Y * Settings.CellSize), Settings.CellSize, Settings.CellSize),
-                        color: Color.White);
+                    enemy.Location * Settings.CellSize + new Vector2(Settings.CellSize / 2.0f, Settings.CellSize / 2.0f),
+                    null,
+                    Color.White,
+                    enemy.Rotation,
+                    new Vector2(64, 64),
+                    Settings.CellSize / 128.0f,
+                    SpriteEffects.None,
+                    0f);
             }
-        }
-        
     }
 }

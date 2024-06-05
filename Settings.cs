@@ -5,5 +5,5 @@
     public static bool IsFullscreen = false;
     public static int CellSize = 10;
 
-    public static float CoordInaccuracy = 0.01f;
+    public static float CoordInaccuracy = 0.0001f;
 }

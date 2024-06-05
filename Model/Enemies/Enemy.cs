@@ -11,6 +11,6 @@ class Enemy : GameCharacter
 {
     public EnemyType Type;
 
-    public Enemy(Coordinate location, float rotation, float speed = 0.0f) : base(location, rotation, speed) { }
+    public Enemy(Vector2 location, float rotation, float speed = 0.0f) : base(location, rotation, speed) { }
     public Enemy(float x, float y, float rotation, float speed = 0.0f) : base(x, y, rotation, speed) { }
 }
