@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
 using System.Collections.Generic;
 using System.Text.Json;
 
@@ -74,11 +73,16 @@ namespace TowerDefense
             };
             gameViewer.TowersViewer.LoadTextures(towerTextures);
 
+
+            var healthBarTexture = new Texture2D(GraphicsDevice, 1, 1);
+            healthBarTexture.SetData(new[] { Color.Red });
+
             var enemyTextures = new Dictionary<EnemyType, Texture2D>()
             {
                 { EnemyType.Zombie, Content.Load<Texture2D>("zombie")}
             };
-            gameViewer.EnemysViewer.LoadTextures(enemyTextures);
+            gameViewer.EnemysViewer.LoadTextures(enemyTextures, healthBarTexture);
+
 
             var squareTexture = Content.Load<Texture2D>("select");
 

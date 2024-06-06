@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 class GameCharacter : GameObject
@@ -94,11 +93,17 @@ class GameCharacter : GameObject
 
     public void LookAt(float toX, float toY)
     {
-        //float angle = atan2(p1.y - p2.y, p1.x - p2.x).
-        var p2 = new Vector2(toX, toY);
-        var angle = Math.Atan2(Location.Y - p2.Y, Location.X - p2.X);
+        var targetLocation = new Vector2(toX, toY);
+        var angle = Math.Atan2(Location.Y - targetLocation.Y, Location.X - targetLocation.X) + Math.PI;
 
-        SetRotation((float)angle + 3.14f);
+        SetRotation((float)angle);
+    }
+
+    public void LookAt(Vector2 targetLocation)
+    {
+        var angle = Math.Atan2(Location.Y - targetLocation.Y, Location.X - targetLocation.X) + Math.PI;
+
+        SetRotation((float)angle);
     }
 
     public void RotationUpdate()

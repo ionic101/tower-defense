@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 
 enum EnemyType
 {
@@ -11,11 +10,17 @@ enum EnemyType
 class Enemy : GameCharacter
 {
     public EnemyType Type;
+    public readonly int MaxHealth = 3;
+    public int Health;
 
-    public int Health = 3;
-
-    public Enemy(Vector2 location, float rotation, float speed = 0.0f) : base(location, rotation, speed) { }
-    public Enemy(float x, float y, float rotation, float speed = 0.0f) : base(x, y, rotation, speed) { }
+    public Enemy(Vector2 location, float rotation, float speed = 0.0f) : base(location, rotation, speed)
+    {
+        Health = MaxHealth;
+    }
+    public Enemy(float x, float y, float rotation, float speed = 0.0f) : base(x, y, rotation, speed)
+    {
+        Health = MaxHealth;
+    }
 
     public void GetDamage(int damage)
     {

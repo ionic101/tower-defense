@@ -1,10 +1,6 @@
-﻿using Microsoft.Xna.Framework.Input;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using Microsoft.Xna.Framework;
 
 class GameMap

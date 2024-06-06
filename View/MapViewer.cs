@@ -4,19 +4,19 @@ using System.Collections.Generic;
 
 class MapViewer
 {
-    private SpriteBatch _spriteBatch;
-    private Dictionary<CellType, Texture2D> _textures;
+    private SpriteBatch spriteBatch;
+    private Dictionary<CellType, Texture2D> textures;
     private GameSessionData sessionData;
 
     public MapViewer(SpriteBatch spriteBatch, GameSessionData sessionData)
     {
-        _spriteBatch = spriteBatch;
+        this.spriteBatch = spriteBatch;
         this.sessionData = sessionData;
     }
 
     public void LoadTextures(Dictionary<CellType, Texture2D> textures)
     {
-        _textures = textures;
+        this.textures = textures;
     }
 
     public void Display()
@@ -25,7 +25,7 @@ class MapViewer
         {
             for (int y = 0; y < sessionData.GameMap.MapHeight; y++)
             {
-                _spriteBatch.Draw(texture: _textures[sessionData.GameMap.Cells[x, y].Type],
+                spriteBatch.Draw(texture: textures[sessionData.GameMap.Cells[x, y].Type],
                     new Rectangle(x * Settings.CellSize, y * Settings.CellSize, Settings.CellSize, Settings.CellSize),
                     color: Color.White);
             }

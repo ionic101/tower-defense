@@ -10,7 +10,7 @@ class GameSessionData
 
     public Vector2 selectedCellCoords = new Vector2(0, 0);
 
-    private float currentTicksSpawnEnemy = 0;
+    private float countSpawnEnemiesTicks = 0;
 
     public void Init()
     {
@@ -47,11 +47,11 @@ class GameSessionData
 
     private void updateWave(float dt)
     {
-        currentTicksSpawnEnemy += dt;
-        if (currentTicksSpawnEnemy > 1000)
+        countSpawnEnemiesTicks += dt;
+        if (countSpawnEnemiesTicks > 1000)
         {
             SpawnEnemy();
-            currentTicksSpawnEnemy -= 1000;
+            countSpawnEnemiesTicks -= 1000;
         }
     }
 
