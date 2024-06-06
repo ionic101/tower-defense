@@ -10,7 +10,7 @@ class GameSessionData
 
     public Vector2 selectedCellCoords = new Vector2(0, 0);
 
-    private float countSpawnEnemiesTicks = 0;
+    private WaveSpawner waveSpawner;
 
     public void Init()
     {
@@ -20,9 +20,8 @@ class GameSessionData
         TowerList = new List<Tower>();
         EnemyList = new List<Enemy>();
 
-        StartWave();
+        waveSpawner = new WaveSpawner(this);
     }
-
     public void SpawnTower(int towerCoordX, int towerCoordY)
     {
         if (!GameMap.IsCellValidForTower(towerCoordX, towerCoordY))
@@ -33,31 +32,9 @@ class GameSessionData
         TowerList.Add(tower);
     }
 
-    public void SpawnEnemy()
-    {
-        var enemy = new GiantZombie(GameMap.spawnCoords.X - 1, GameMap.spawnCoords.Y, 0.0f, 100);
-        enemy.MoveByPath(GameMap.RoadPath, () => Console.WriteLine("end"));
-        EnemyList.Add(enemy);
-    }
-
-    public void StartWave()
-    {
-
-    }
-
-    private void updateWave(float dt)
-    {
-        countSpawnEnemiesTicks += dt;
-        if (countSpawnEnemiesTicks > 1000)
-        {
-            SpawnEnemy();
-            countSpawnEnemiesTicks -= 1000;
-        }
-    }
-
     public void Update(float dt)
     {
-        updateWave(dt);
+        waveSpawner.Update(dt);
 
         foreach (var tower in TowerList)
         {
@@ -72,9 +49,7 @@ class GameSessionData
                 deadEnemies.Add(enemy);
             else
                 enemy.Update(dt);
-                
         }
-
         
         foreach (var deadEnemy in deadEnemies)
         {
