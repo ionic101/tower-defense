@@ -35,7 +35,7 @@ class GameSessionData
 
     public void SpawnEnemy()
     {
-        var enemy = new Zombie(GameMap.spawnCoords.X - 1, GameMap.spawnCoords.Y, 0.0f, 100);
+        var enemy = new GiantZombie(GameMap.spawnCoords.X - 1, GameMap.spawnCoords.Y, 0.0f, 100);
         enemy.MoveByPath(GameMap.RoadPath, () => Console.WriteLine("end"));
         EnemyList.Add(enemy);
     }

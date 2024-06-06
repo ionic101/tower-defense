@@ -1,26 +1,22 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 
-enum EnemyType
+public enum EnemyType
 {
     Zombie,
-    RockZombie,
-    Demon
+    StoneZombie,
+    FastZombie,
+    GiantZombie
 }
 
 class Enemy : GameCharacter
 {
     public EnemyType Type;
-    public readonly int MaxHealth = 3;
+    public int MaxHealth;
     public int Health;
 
-    public Enemy(Vector2 location, float rotation, float speed = 0.0f) : base(location, rotation, speed)
-    {
-        Health = MaxHealth;
-    }
-    public Enemy(float x, float y, float rotation, float speed = 0.0f) : base(x, y, rotation, speed)
-    {
-        Health = MaxHealth;
-    }
+    public Enemy(Vector2 location, float rotation, float speed = 0.0f) : base(location, rotation, speed) { }
+    public Enemy(float x, float y, float rotation, float speed = 0.0f) : base(x, y, rotation, speed) { }
 
     public void GetDamage(int damage)
     {

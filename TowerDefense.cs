@@ -79,7 +79,10 @@ namespace TowerDefense
 
             var enemyTextures = new Dictionary<EnemyType, Texture2D>()
             {
-                { EnemyType.Zombie, Content.Load<Texture2D>("zombie")}
+                { EnemyType.Zombie, Content.Load<Texture2D>("zombie")},
+                { EnemyType.StoneZombie, Content.Load<Texture2D>("stone")},
+                { EnemyType.FastZombie, Content.Load<Texture2D>("faster")},
+                { EnemyType.GiantZombie, Content.Load<Texture2D>("giant")}
             };
             gameViewer.EnemysViewer.LoadTextures(enemyTextures, healthBarTexture);
 
