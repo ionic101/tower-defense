@@ -69,7 +69,10 @@ namespace TowerDefense
 
             var towerTextures = new Dictionary<TowerType, Texture2D>()
             {
-                { TowerType.Policeman, Content.Load<Texture2D>("policeman")}
+                { TowerType.Policeman, Content.Load<Texture2D>("policeman")},
+                { TowerType.Soldier, Content.Load<Texture2D>("soldier")},
+                { TowerType.Sniper, Content.Load<Texture2D>("sniper")},
+                { TowerType.Rocketman, Content.Load<Texture2D>("rocketman")}
             };
             gameViewer.TowersViewer.LoadTextures(towerTextures);
 

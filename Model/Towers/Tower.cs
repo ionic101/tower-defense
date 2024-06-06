@@ -4,20 +4,21 @@ using System.Collections.Generic;
 enum TowerType
 {
     Policeman,
-    Soldar,
-    Minigunner
+    Soldier,
+    Sniper,
+    Rocketman
 }
 
 class Tower : GameCharacter
 {
-    private List<Enemy> enemyList;
-    private const float ReloadTime = 1000;
-    private float countReloadTicks = 0;
-    private Enemy targetEnemy;
+    public List<Enemy> enemyList;
+    public float ReloadTime;
+    public float countReloadTicks = 0;
+    public Enemy targetEnemy;
 
-    public readonly TowerType Type;
-    public readonly int ShootRadius = 3;
-    public readonly int ShootDamage = 1;
+    public TowerType Type;
+    public int ShootRadius;
+    public int ShootDamage;
 
     public Tower(Vector2 location, float rotation, List<Enemy> enemyList, float speed = 0.0f) : base(location, rotation, speed)
     {
@@ -46,7 +47,7 @@ class Tower : GameCharacter
         }
     }
 
-    public void Shoot()
+    public virtual void Shoot()
     {
         if (targetEnemy == null)
             return;
@@ -60,9 +61,9 @@ class Tower : GameCharacter
         countReloadTicks = 0;
     }
 
-    private bool targetIsValid()
+    public bool targetIsValid()
     {
-        return targetEnemy != null && IsInRadius(targetEnemy.Location, ShootRadius);
+        return targetEnemy != null && IsInRadius(targetEnemy.Location, ShootRadius) && targetEnemy.IsAlive();
     }
 
     public void Update(float dt)

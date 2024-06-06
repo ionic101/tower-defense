@@ -27,7 +27,7 @@ class GameSessionData
         if (!GameMap.IsCellValidForTower(towerCoordX, towerCoordY))
             return;
 
-        var tower = new Policeman(towerCoordX, towerCoordY, 0.0f, EnemyList);
+        var tower = new Rocketman(towerCoordX, towerCoordY, 0.0f, EnemyList);
         GameMap.Cells[towerCoordX, towerCoordY] = new Cell(towerCoordX, towerCoordY, CellType.Tower);
         TowerList.Add(tower);
     }
