@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 
 class EnemysViewer
@@ -21,7 +20,6 @@ class EnemysViewer
         this.enemyTextures = enemyTextures;
     }
 
-    //TO REFACT!!!!!
     public void Display()
     {
             foreach (var enemy in sessionData.EnemyList)

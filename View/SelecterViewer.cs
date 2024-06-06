@@ -6,7 +6,6 @@ using System.Runtime;
 class SelecterViewer
 {
     private SpriteBatch spriteBatch;
-    private Dictionary<CellType, Texture2D> _textures;
     private GameSessionData sessionData;
 
     private Texture2D texture;

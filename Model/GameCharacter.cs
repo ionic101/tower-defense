@@ -55,9 +55,9 @@ class GameCharacter : GameObject
         isMovingByPath = true;
     }
 
-    static bool IsInRadius(Vector2 firstVector, Vector2 secondVector, float radius)
+    public bool IsInRadius(Vector2 checkLocation, float radius)
     {
-        return Vector2.Distance(firstVector, secondVector) <= radius;
+        return Vector2.Distance(Location, checkLocation) <= radius;
     }
 
     private bool isMoveDirectionCorrect()
@@ -87,9 +87,18 @@ class GameCharacter : GameObject
         if (!IsMoving)
             return;
 
-        SetLocation(Location + MoveDirection * deltaSpeed * dt);
-        if (IsInRadius(Location, toLocation, Settings.CoordInaccuracy) || isMoveDirectionCorrect())
+        SetLocation(Location + MoveDirection * deltaSpeed * dt / 1000);
+        if (IsInRadius(toLocation, Settings.CoordInaccuracy) || isMoveDirectionCorrect())
             IsMoving = false;
+    }
+
+    public void LookAt(float toX, float toY)
+    {
+        //float angle = atan2(p1.y - p2.y, p1.x - p2.x).
+        var p2 = new Vector2(toX, toY);
+        var angle = Math.Atan2(Location.Y - p2.Y, Location.X - p2.X);
+
+        SetRotation((float)angle + 3.14f);
     }
 
     public void RotationUpdate()

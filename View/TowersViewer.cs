@@ -4,29 +4,35 @@ using System.Collections.Generic;
 
 class TowersViewer
 {
-    private SpriteBatch _spriteBatch;
-    private Dictionary<TowerType, Texture2D> _towerTextures;
+    private SpriteBatch spriteBatch;
+    private Dictionary<TowerType, Texture2D> towerTextures;
 
     private GameSessionData sessionData;
 
     public TowersViewer(SpriteBatch spriteBatch, GameSessionData sessionData)
     {
-        _spriteBatch = spriteBatch;
+        this.spriteBatch = spriteBatch;
         this.sessionData = sessionData;
     }
 
     public void LoadTextures(Dictionary<TowerType, Texture2D> towerTextures)
     {
-        _towerTextures = towerTextures;
+        this.towerTextures = towerTextures;
     }
 
     public void Display()
     {
         foreach (var tower in sessionData.TowerList)
         {
-            _spriteBatch.Draw(_towerTextures[tower.Type],
-                    new Rectangle((int)tower.Location.X * Settings.CellSize, (int)tower.Location.Y * Settings.CellSize, Settings.CellSize, Settings.CellSize),
-                    color: Color.White);
+            spriteBatch.Draw(towerTextures[tower.Type],
+                tower.Location * Settings.CellSize + new Vector2(Settings.CellSize / 2.0f, Settings.CellSize / 2.0f),
+                null,
+                Color.White,
+                tower.Rotation,
+                new Vector2(64, 64),
+                Settings.CellSize / 128.0f,
+                SpriteEffects.None,
+                0f);
         }
     }
 }

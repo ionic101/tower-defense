@@ -27,8 +27,8 @@ class GameObject
         Location = new Vector2(x, y);
     }
 
-    public void SetRotation(float rotation)
+    public void SetRotation(float radians)
     {
-        Rotation = rotation;
+        Rotation = radians;
     }
 }

@@ -94,7 +94,7 @@ namespace TowerDefense
             playerController.ListenEvents();
 
             //Data
-            var dt = (float)gameTime.ElapsedGameTime.TotalMilliseconds / 1000;
+            var dt = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             sessionData.Update(dt);
 
             base.Update(gameTime);

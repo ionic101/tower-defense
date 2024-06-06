@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework;
-using System.Threading.Tasks;
-using System.Threading.Channels;
-
 
 class GameSessionData
 {
@@ -32,7 +28,7 @@ class GameSessionData
         if (!GameMap.IsCellValidForTower(towerCoordX, towerCoordY))
             return;
 
-        var tower = new Policeman(towerCoordX, towerCoordY, 0.0f);
+        var tower = new Policeman(towerCoordX, towerCoordY, 0.0f, EnemyList);
         GameMap.Cells[towerCoordX, towerCoordY] = new Cell(towerCoordX, towerCoordY, CellType.Tower);
         TowerList.Add(tower);
     }
@@ -52,22 +48,37 @@ class GameSessionData
     private void updateWave(float dt)
     {
         currentTicksSpawnEnemy += dt;
-        if (currentTicksSpawnEnemy > 1)
+        if (currentTicksSpawnEnemy > 1000)
         {
             SpawnEnemy();
-            currentTicksSpawnEnemy -= 1;
+            currentTicksSpawnEnemy -= 1000;
         }
-            
-
     }
 
     public void Update(float dt)
     {
         updateWave(dt);
+
+        foreach (var tower in TowerList)
+        {
+            tower.Update(dt);
+        }
+
+        var deadEnemies = new List<Enemy>();
+
         foreach (var enemy in EnemyList)
         {
-            enemy.MoveUpdate(dt);
-            enemy.RotationUpdate();
+            if (!enemy.IsAlive())
+                deadEnemies.Add(enemy);
+            else
+                enemy.Update(dt);
+                
+        }
+
+        
+        foreach (var deadEnemy in deadEnemies)
+        {
+            EnemyList.Remove(deadEnemy);
         }
     }
 }
