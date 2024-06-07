@@ -11,6 +11,13 @@ class GameSessionData
     public Vector2 selectedCellCoords = new Vector2(0, 0);
     public TowerType selectedTowerType;
     public Dictionary<Vector2, TowerType> towerButtonsLocations = new Dictionary<Vector2, TowerType>();
+    public Dictionary<TowerType, int> costTowers = new Dictionary<TowerType, int>()
+    {
+        {TowerType.Policeman, 200 },
+        {TowerType.Soldier, 800 },
+        {TowerType.Sniper, 450 },
+        {TowerType.Rocketman, 900 }
+    };
 
     private WaveSpawner waveSpawner;
 

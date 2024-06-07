@@ -95,7 +95,8 @@ namespace TowerDefense
             gameViewer.SelecterViewer.LoadTexture(squareTexture);
 
             var slotTexture = Content.Load<Texture2D>("slot");
-            gameViewer.TowerStoreViewer.LoadTextures(towerTextures, slotTexture);
+            var spriteFont = Content.Load<SpriteFont>("font");
+            gameViewer.TowerStoreViewer.LoadTextures(towerTextures, slotTexture, spriteFont);
         }
 
         protected override void Update(GameTime gameTime)

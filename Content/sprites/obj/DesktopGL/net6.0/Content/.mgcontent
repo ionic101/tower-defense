@@ -5,6 +5,7 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/faster.png</File>
+    <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/font.spritefont</File>
     <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/giant.png</File>
     <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/grass.png</File>
     <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/policeman.png</File>
@@ -18,6 +19,7 @@
     <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/zombie.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

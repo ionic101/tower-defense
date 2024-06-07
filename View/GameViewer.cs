@@ -14,7 +14,7 @@ class GameViewer
         EnemysViewer = new EnemysViewer(spriteBatch, sessionData);
         MapViewer = new MapViewer(spriteBatch, sessionData);
         SelecterViewer = new SelecterViewer(spriteBatch, sessionData);
-        TowerStoreViewer = new TowerStoreViewer(spriteBatch, sessionData.towerButtonsLocations, sessionData.GameMap.MapWidth);
+        TowerStoreViewer = new TowerStoreViewer(spriteBatch, sessionData);
     }
 
     public void Display()
