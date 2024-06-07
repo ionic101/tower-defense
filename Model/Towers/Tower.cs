@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 
 enum TowerType
@@ -19,15 +20,18 @@ class Tower : GameCharacter
     public TowerType Type;
     public int ShootRadius;
     public int ShootDamage;
+    public Action<int> earnMoneyAction;
 
-    public Tower(Vector2 location, float rotation, List<Enemy> enemyList, float speed = 0.0f) : base(location, rotation, speed)
+    public Tower(Vector2 location, float rotation, List<Enemy> enemyList, Action<int> earnMoneyAction, float speed = 0.0f) : base(location, rotation, speed)
     {
         this.enemyList = enemyList;
+        this.earnMoneyAction = earnMoneyAction;
     }
 
-    public Tower(float x, float y, float rotation, List<Enemy> enemyList, float speed = 0.0f) : base(x, y, rotation, speed)
+    public Tower(float x, float y, float rotation, List<Enemy> enemyList, Action<int> earnMoneyAction, float speed = 0.0f) : base(x, y, rotation, speed)
     {
         this.enemyList = enemyList;
+        this.earnMoneyAction= earnMoneyAction;
     }
 
     public void FindTarget()
@@ -59,6 +63,8 @@ class Tower : GameCharacter
             targetEnemy = null;
 
         countReloadTicks = 0;
+        
+        earnMoneyAction.Invoke(ShootDamage * Settings.CoefMoney);
     }
 
     public bool targetIsValid()

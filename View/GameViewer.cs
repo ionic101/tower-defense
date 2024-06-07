@@ -7,6 +7,7 @@ class GameViewer
     public EnemysViewer EnemysViewer { get; private set; }
     public SelecterViewer SelecterViewer { get; private set; }
     public TowerStoreViewer TowerStoreViewer { get; private set; }
+    public InfoViewer InfoViewer { get; private set; }
 
     public void Init(SpriteBatch spriteBatch, GameSessionData sessionData)
     {
@@ -15,6 +16,7 @@ class GameViewer
         MapViewer = new MapViewer(spriteBatch, sessionData);
         SelecterViewer = new SelecterViewer(spriteBatch, sessionData);
         TowerStoreViewer = new TowerStoreViewer(spriteBatch, sessionData);
+        InfoViewer = new InfoViewer(spriteBatch, sessionData);
     }
 
     public void Display()
@@ -24,5 +26,6 @@ class GameViewer
         EnemysViewer.Display();
         SelecterViewer.Display();
         TowerStoreViewer.Display();
+        InfoViewer.Display();
     }
 }

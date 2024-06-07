@@ -18,6 +18,7 @@ class GameSessionData
         {TowerType.Sniper, 450 },
         {TowerType.Rocketman, 900 }
     };
+    public int Money = 900;
 
     private WaveSpawner waveSpawner;
 
@@ -31,26 +32,37 @@ class GameSessionData
 
         waveSpawner = new WaveSpawner(this);
     }
+
+    public void EarnMoney(int money)
+    {
+        Money += money;
+    }
+
     public void SpawnTower(int towerCoordX, int towerCoordY)
     {
+        if (Money < costTowers[selectedTowerType])
+            return;
+        else
+            Money -= costTowers[selectedTowerType];
+
         Tower tower;
 
         switch (selectedTowerType)
         {
             case TowerType.Policeman:
-                tower = new Policeman(towerCoordX, towerCoordY, 0.0f, EnemyList);
+                tower = new Policeman(towerCoordX, towerCoordY, 0.0f, EnemyList, EarnMoney);
                 break;
             case TowerType.Soldier:
-                tower = new Soldier(towerCoordX, towerCoordY, 0.0f, EnemyList);
+                tower = new Soldier(towerCoordX, towerCoordY, 0.0f, EnemyList, EarnMoney);
                 break;
             case TowerType.Sniper:
-                tower = new Sniper(towerCoordX, towerCoordY, 0.0f, EnemyList);
+                tower = new Sniper(towerCoordX, towerCoordY, 0.0f, EnemyList, EarnMoney);
                 break;
             case TowerType.Rocketman:
-                tower = new Rocketman(towerCoordX, towerCoordY, 0.0f, EnemyList);
+                tower = new Rocketman(towerCoordX, towerCoordY, 0.0f, EnemyList, EarnMoney);
                 break;
             default:
-                tower = new Policeman(towerCoordX, towerCoordY, 0.0f, EnemyList);
+                tower = new Policeman(towerCoordX, towerCoordY, 0.0f, EnemyList, EarnMoney);
                 break;
         }
 

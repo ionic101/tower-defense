@@ -4,6 +4,7 @@
     public static int ScreenHeight = 500;
     public static bool IsFullscreen = false;
     public static int CellSize = 10;
+    public static int CoefMoney = 10;
 
     public static float CoordInaccuracy = 0.01f;
 }
