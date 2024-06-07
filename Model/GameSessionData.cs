@@ -9,6 +9,8 @@ class GameSessionData
     public List<Enemy> EnemyList { get; set; }
 
     public Vector2 selectedCellCoords = new Vector2(0, 0);
+    public TowerType selectedTowerType;
+    public Dictionary<Vector2, TowerType> towerButtonsLocations = new Dictionary<Vector2, TowerType>();
 
     private WaveSpawner waveSpawner;
 
@@ -24,10 +26,27 @@ class GameSessionData
     }
     public void SpawnTower(int towerCoordX, int towerCoordY)
     {
-        if (!GameMap.IsCellValidForTower(towerCoordX, towerCoordY))
-            return;
+        Tower tower;
 
-        var tower = new Rocketman(towerCoordX, towerCoordY, 0.0f, EnemyList);
+        switch (selectedTowerType)
+        {
+            case TowerType.Policeman:
+                tower = new Policeman(towerCoordX, towerCoordY, 0.0f, EnemyList);
+                break;
+            case TowerType.Soldier:
+                tower = new Soldier(towerCoordX, towerCoordY, 0.0f, EnemyList);
+                break;
+            case TowerType.Sniper:
+                tower = new Sniper(towerCoordX, towerCoordY, 0.0f, EnemyList);
+                break;
+            case TowerType.Rocketman:
+                tower = new Rocketman(towerCoordX, towerCoordY, 0.0f, EnemyList);
+                break;
+            default:
+                tower = new Policeman(towerCoordX, towerCoordY, 0.0f, EnemyList);
+                break;
+        }
+
         GameMap.Cells[towerCoordX, towerCoordY] = new Cell(towerCoordX, towerCoordY, CellType.Tower);
         TowerList.Add(tower);
     }

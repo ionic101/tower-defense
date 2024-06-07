@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Input;
+using System.Linq;
 
 class PlayerController
 {
@@ -31,7 +32,12 @@ class PlayerController
         }
         else if (isLeftButtonPressed && mouseState.LeftButton == ButtonState.Released)
         {
-            sessionData.SpawnTower(clickedCoordX / Settings.CellSize, clickedCoordY / Settings.CellSize);
+            if (sessionData.GameMap.IsCellValidForTower(clickedCoordX / Settings.CellSize, clickedCoordY / Settings.CellSize))
+                sessionData.SpawnTower(clickedCoordX / Settings.CellSize, clickedCoordY / Settings.CellSize);
+
+            if (sessionData.towerButtonsLocations.Keys.Contains(sessionData.selectedCellCoords))
+                sessionData.selectedTowerType = sessionData.towerButtonsLocations[sessionData.selectedCellCoords];
+
             isLeftButtonPressed = false;
         }
     }
