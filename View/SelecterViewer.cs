@@ -21,10 +21,10 @@ class SelecterViewer
 
     public void Display()
     {
-
-        spriteBatch.Draw(texture,
-            new Rectangle((int)sessionData.selectedCellCoords.X * Settings.CellSize, (int)sessionData.selectedCellCoords.Y * Settings.CellSize, Settings.CellSize, Settings.CellSize),
-            color: Color.White);
+        if (sessionData.selectedCellCoords.X < sessionData.GameMap.MapWidth)
+            spriteBatch.Draw(texture,
+                new Rectangle((int)sessionData.selectedCellCoords.X * Settings.CellSize, (int)sessionData.selectedCellCoords.Y * Settings.CellSize, Settings.CellSize, Settings.CellSize),
+                color: Color.Red);
     }
 }
 

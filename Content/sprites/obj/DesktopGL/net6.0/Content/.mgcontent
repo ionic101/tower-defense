@@ -16,9 +16,11 @@
     <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/sniper.png</File>
     <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/soldier.png</File>
     <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/stone.png</File>
+    <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/total_money_font.spritefont</File>
     <File>C:/Users/User/Documents/git/tower-defense/Content/sprites/zombie.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

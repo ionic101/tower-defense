@@ -96,9 +96,10 @@ namespace TowerDefense
 
             var slotTexture = Content.Load<Texture2D>("slot");
             var spriteFont = Content.Load<SpriteFont>("font");
-            gameViewer.TowerStoreViewer.LoadTextures(towerTextures, slotTexture, spriteFont);
+            gameViewer.TowerStoreViewer.LoadTextures(towerTextures, slotTexture, spriteFont, squareTexture);
 
-            gameViewer.InfoViewer.LoadTexture(spriteFont);
+            var totalMoneyFont = Content.Load<SpriteFont>("total_money_font");
+            gameViewer.InfoViewer.LoadTexture(totalMoneyFont);
         }
 
         protected override void Update(GameTime gameTime)

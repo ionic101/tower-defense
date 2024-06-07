@@ -24,6 +24,18 @@ class InfoViewer
     public void Display()
     {
         spriteBatch.DrawString(font, sessionData.Money.ToString() + "$",
-            new Vector2(0, 0), Color.White);
+            new Vector2(10, 10), Color.White);
+
+        if (!sessionData.StartGame)
+            spriteBatch.DrawString(font, "For starting game press Enter",
+            new Vector2(10, 65), Color.White);
+
+        if (sessionData.IsLose)
+            spriteBatch.DrawString(font, "You lose!",
+            new Vector2(10, 65), Color.White);
+
+        if (sessionData.IsWin)
+            spriteBatch.DrawString(font, "You win!",
+            new Vector2(10, 65), Color.White);
     }
 }

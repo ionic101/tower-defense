@@ -15,6 +15,9 @@ class PlayerController
 
     public void ListenEvents()
     {
+        if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+            sessionData.StartGame = true;
+
         MouseState mouseState = Mouse.GetState();
 
         sessionData.selectedCellCoords.X = mouseState.X / Settings.CellSize;

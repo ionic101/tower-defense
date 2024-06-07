@@ -1,9 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 class GameSessionData
 {
+    public bool StartGame = false;
+    public bool IsLose = false;
+    public bool IsWin = false;
     public GameMap GameMap { get; private set; }
     public List<Tower> TowerList { get; set; }
     public List<Enemy> EnemyList { get; set; }
@@ -72,6 +74,8 @@ class GameSessionData
 
     public void Update(float dt)
     {
+        if (!StartGame) return;
+
         waveSpawner.Update(dt);
 
         foreach (var tower in TowerList)
@@ -93,5 +97,13 @@ class GameSessionData
         {
             EnemyList.Remove(deadEnemy);
         }
+
+        CheckOnWin();
+    }
+
+    public void CheckOnWin()
+    {
+        if (EnemyList.Count == 0 && waveSpawner.IsOperationsFinished())
+            IsWin = true;
     }
 }

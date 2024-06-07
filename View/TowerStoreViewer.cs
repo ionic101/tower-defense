@@ -11,6 +11,7 @@ class TowerStoreViewer
 
     private Dictionary<TowerType, Texture2D> towerTextures;
     private Texture2D slotTexture;
+    private Texture2D selectedTexture;
 
     public TowerStoreViewer(SpriteBatch spriteBatch, GameSessionData sessionData)
     {
@@ -32,11 +33,12 @@ class TowerStoreViewer
         }
     }
 
-    public void LoadTextures(Dictionary<TowerType, Texture2D> towerTextures, Texture2D slotTexture, SpriteFont font)
+    public void LoadTextures(Dictionary<TowerType, Texture2D> towerTextures, Texture2D slotTexture, SpriteFont font, Texture2D selectedTexture)
     {
         this.towerTextures = towerTextures;
         this.slotTexture = slotTexture;
         this.font = font;
+        this.selectedTexture = selectedTexture;
     }
 
     public void Display()
@@ -50,8 +52,11 @@ class TowerStoreViewer
             spriteBatch.Draw(towerTextures[towerType], new Rectangle((int)buttonLocation.X * Settings.CellSize, (int)buttonLocation.Y * Settings.CellSize, Settings.CellSize, Settings.CellSize), Color.White);
             spriteBatch.DrawString(font, sessionData.costTowers[towerType].ToString() + "$",
                 new Vector2((int)buttonLocation.X * Settings.CellSize, ((int)buttonLocation.Y + 1) * Settings.CellSize), Color.White);
+
+            if (sessionData.selectedTowerType == towerType)
+                spriteBatch.Draw(selectedTexture,
+                    new Rectangle((int)buttonLocation.X * Settings.CellSize, (int)buttonLocation.Y * Settings.CellSize, Settings.CellSize, Settings.CellSize), new Color(0, 255, 0));
         }
-        
     }
 }
 

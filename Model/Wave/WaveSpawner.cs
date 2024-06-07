@@ -37,7 +37,7 @@ class WaveSpawner
                 break;
         }
 
-        enemy.MoveByPath(sessionData.GameMap.RoadPath, () => Console.WriteLine("end"));
+        enemy.MoveByPath(sessionData.GameMap.RoadPath, () => sessionData.IsLose = true);
         sessionData.EnemyList.Add(enemy);
     }
 
@@ -65,5 +65,10 @@ class WaveSpawner
         }
 
         operationIndex++;
+    }
+
+    public bool IsOperationsFinished()
+    {
+        return operationIndex >= operations.Count();
     }
 }
